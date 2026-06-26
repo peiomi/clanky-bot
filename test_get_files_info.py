@@ -1,11 +1,17 @@
 from functions.get_files_info import get_files_info
 
-test1 = get_files_info("calculator", ".")
-test2 = get_files_info("calculator", "/bin")
-test3 = get_files_info("calculator", "../")
-test4 = get_files_info("calculator", "main.py")
+def run_directory_tests():
+    working_dir = "calculator"
 
-print(test1)
-print(test2)
-print(test3)
-print(test4)
+    tests = [
+        ("current", get_files_info(working_dir, ".")),
+        ("'/bin'", get_files_info(working_dir, "/bin")),
+        ("'../'", get_files_info(working_dir, "../")),
+        ("'pkg'", get_files_info(working_dir, "pkg"))
+    ]
+
+    for target_dir, result in tests:
+        print(f"Result for {target_dir} directory:")
+        print(result)
+
+run_directory_tests()
